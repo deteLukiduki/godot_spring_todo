@@ -20,7 +20,20 @@ func _on_request_completed(result, response_code, headers, body):
 		print(todo)
 		var todoItem = todo_res.instance()
 		todoItem.setText(todo.text)
-		$HBoxContainer/priority1/VBoxContainer.add_child(todoItem)
+		print(todo.priority)
+		var priority: int = todo.priority
+		
+		match priority:
+			1:
+				$HBoxContainer/priority1/VBoxContainer.add_child(todoItem)
+			2: 
+				$HBoxContainer/priority2/VBoxContainer.add_child(todoItem)
+			3: 
+				$HBoxContainer/priority3/VBoxContainer.add_child(todoItem)
+			4:
+				$HBoxContainer/priority4/VBoxContainer.add_child(todoItem)
+			_:
+				$HBoxContainer/priority5/VBoxContainer.add_child(todoItem)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
