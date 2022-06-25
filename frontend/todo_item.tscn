@@ -1,8 +1,11 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://todo_item.gd" type="Script" id=1]
 
 [node name="todo_item" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
 
 [node name="TextEdit" type="TextEdit" parent="."]
 margin_right = 331.0

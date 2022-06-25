@@ -72,3 +72,5 @@ margin_right = 200.0
 margin_bottom = 598.0
 rect_min_size = Vector2( 200, 0 )
 theme = SubResource( 1 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]
