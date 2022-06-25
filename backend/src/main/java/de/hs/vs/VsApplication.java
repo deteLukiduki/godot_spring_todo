@@ -16,6 +16,15 @@ public class VsApplication {
 		return "success";
 	}
 
+	@GetMapping("/todo")
+	public ToDoItem getTodoItem() {
+		ToDoItem temp = new ToDoItem();
+		temp.setText("I have to do something");
+		temp.setPriority(1);
+
+		return temp;
+	}
+
 	public static void main(String[] args) {
 		SpringApplication.run(VsApplication.class, args);
 	}
