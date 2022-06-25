@@ -10,17 +10,17 @@ var todo_res = load(todo_path)
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HTTPRequest.connect("request_completed", self, "_on_request_completed")
-	$HTTPRequest.request("http://localhost:8090/todo")
+	$HTTPRequest.request("http://localhost:8090/todos")
 
 
 func _on_request_completed(result, response_code, headers, body):
-	var json = JSON.parse(body.get_string_from_utf8())
-	if json:
-		print(json.result)
+	var todos = JSON.parse(body.get_string_from_utf8())
+	
+	for todo in todos.result:
+		print(todo)
 		var todoItem = todo_res.instance()
-		todoItem.setText(json.result.text)
+		todoItem.setText(todo.text)
 		$HBoxContainer/priority1/VBoxContainer.add_child(todoItem)
-		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
