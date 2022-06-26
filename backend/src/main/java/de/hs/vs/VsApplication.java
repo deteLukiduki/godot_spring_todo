@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -21,16 +23,19 @@ public class VsApplication {
 		ToDoItem item1 = new ToDoItem();
 		item1.setText("Play games");
 		item1.setPriority(1);
+		item1.setID(todoItems.size());
 		todoItems.add(item1);
 
 		ToDoItem item2 = new ToDoItem();
 		item2.setText("Study");
 		item2.setPriority(1);
+		item2.setID(todoItems.size());
 		todoItems.add(item2);
 
 		ToDoItem item3 = new ToDoItem();
 		item3.setText("Wash my car");
 		item3.setPriority(3);
+		item3.setID(todoItems.size());
 		todoItems.add(item3);
 	}
 
@@ -53,6 +58,17 @@ public class VsApplication {
 	@CrossOrigin(origins = "http://localhost:8060")
 	public List<ToDoItem> getTodoItems() {
 		return this.todoItems;
+	}
+
+	@PostMapping("/todos/{id}")
+	@CrossOrigin(origins = "http://localhost:8060")
+	public ToDoItem addTodoItem(@PathVariable ToDoItem todo) {
+		ToDoItem tempTodo = new ToDoItem();
+		tempTodo.setText(todo.getText());
+		tempTodo.setPriority(todo.getPriority());
+		tempTodo.setID(this.todoItems.size());
+		todoItems.add(tempTodo);
+		return tempTodo;
 	}
 
 	public static void main(String[] args) {
