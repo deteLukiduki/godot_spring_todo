@@ -11,7 +11,13 @@ var todo_res = load(todo_path)
 func _ready():
 	$HTTPRequest.connect("request_completed", self, "_on_request_completed")
 	$HTTPRequest.request("http://localhost:8090/todos")
-
+	
+	$createPanel/OptionButton.add_item("0")
+	$createPanel/OptionButton.add_item("1")
+	$createPanel/OptionButton.add_item("2")
+	$createPanel/OptionButton.add_item("3")
+	$createPanel/OptionButton.add_item("4")
+	
 
 func _on_request_completed(result, response_code, headers, body):
 	var todos = JSON.parse(body.get_string_from_utf8())
@@ -35,6 +41,15 @@ func _on_request_completed(result, response_code, headers, body):
 			_:
 				$HBoxContainer/priority5/VBoxContainer.add_child(todoItem)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+
+
+func _on_Button_pressed():
+	$createPanel.visible = true
+
+
+func _on_Submit_pressed():
+	pass # Replace with function body.
+
+
+func _on_Cancel_pressed():
+	$createPanel.visible = false
