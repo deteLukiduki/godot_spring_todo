@@ -120,6 +120,7 @@ margin_bottom = 42.0
 text = "Add"
 
 [node name="createPanel" type="Panel" parent="."]
+visible = false
 margin_left = 350.0
 margin_top = 175.0
 margin_right = 680.0
