@@ -1,5 +1,6 @@
 package de.hs.vs;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -57,12 +60,14 @@ public class VsApplication {
 	@GetMapping("/todos")
 	@CrossOrigin(origins = "http://localhost:8060")
 	public List<ToDoItem> getTodoItems() {
+		System.out.println("get");
 		return this.todoItems;
 	}
 
-	@PostMapping("/todos/{id}")
+	@PostMapping(path="/todos", consumes = "application/json", produces = "application/json")
 	@CrossOrigin(origins = "http://localhost:8060")
-	public ToDoItem addTodoItem(@PathVariable ToDoItem todo) {
+	public ToDoItem addTodoItem(@RequestBody ToDoItem todo) {
+		System.out.println("post");
 		ToDoItem tempTodo = new ToDoItem();
 		tempTodo.setText(todo.getText());
 		tempTodo.setPriority(todo.getPriority());

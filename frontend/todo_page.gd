@@ -21,7 +21,7 @@ func _ready():
 
 func _on_request_completed(result, response_code, headers, body):
 	var todos = JSON.parse(body.get_string_from_utf8())
-	
+	print(response_code)
 	for todo in todos.result:
 		print(todo)
 		var todoItem = todo_res.instance()
@@ -42,13 +42,20 @@ func _on_request_completed(result, response_code, headers, body):
 				$HBoxContainer/priority5/VBoxContainer.add_child(todoItem)
 
 
-
 func _on_Button_pressed():
 	$createPanel.visible = true
 
 
 func _on_Submit_pressed():
-	pass # Replace with function body.
+	var data = {
+		text = $createPanel/TextEdit.text,
+		priority = $createPanel/OptionButton.selected
+	}
+	var query = JSON.print(data)
+	print(query)
+	
+	var headers = ["Content-Type: application/json"]
+	$HTTPRequest.request("http://localhost:8090/todos", headers, true, HTTPClient.METHOD_POST, query)
 
 
 func _on_Cancel_pressed():
