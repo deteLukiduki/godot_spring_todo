@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=11 format=2]
+[gd_resource type="Theme" load_steps=12 format=2]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.533333, 0.533333, 0.533333, 1 )
@@ -22,6 +22,8 @@ bg_color = Color( 0.8, 0.8, 0.8, 1 )
 
 [sub_resource type="StyleBoxFlat" id=4]
 
+[sub_resource type="StyleBoxFlat" id=11]
+
 [resource]
 Button/colors/font_color = Color( 0, 0, 0, 1 )
 Button/colors/font_color_hover = Color( 0.14902, 0.133333, 0.133333, 1 )
@@ -38,4 +40,6 @@ OptionButton/styles/pressed = SubResource( 9 )
 PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
 PopupMenu/styles/panel = SubResource( 10 )
 TextEdit/colors/font_color = Color( 0.0627451, 0.0627451, 0.0627451, 1 )
+TextEdit/colors/font_color_readonly = Color( 0, 0, 0, 1 )
 TextEdit/styles/normal = SubResource( 4 )
+TextEdit/styles/read_only = SubResource( 11 )

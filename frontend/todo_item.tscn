@@ -16,6 +16,7 @@ anchor_bottom = 1.0
 margin_left = 14.0
 theme = ExtResource( 2 )
 text = "test"
+readonly = true
 
 [node name="Button" type="Button" parent="."]
 anchor_right = 1.0
