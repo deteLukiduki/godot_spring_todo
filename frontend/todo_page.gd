@@ -13,8 +13,7 @@ var get = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HTTPRequest.connect("request_completed", self, "_on_request_completed")
-	get = true
-	$HTTPRequest.request("http://localhost:8090/todos")
+	requestTodos()
 	
 	$createPanel/OptionButton.add_item("0")
 	$createPanel/OptionButton.add_item("1")
@@ -22,6 +21,9 @@ func _ready():
 	$createPanel/OptionButton.add_item("3")
 	$createPanel/OptionButton.add_item("4")
 
+func requestTodos():
+	get = true
+	$HTTPRequest.request("http://localhost:8090/todos")
 
 func _on_request_completed(result, response_code, headers, body):
 	if get:
@@ -45,7 +47,11 @@ func _on_request_completed(result, response_code, headers, body):
 					$HBoxContainer/priority5/VBoxContainer.add_child(todoItem)
 			get = false
 	elif post:
+		get_tree().reload_current_scene()
 		post = false
+		
+		
+	
 
 
 func _on_Button_pressed():
@@ -61,6 +67,7 @@ func _on_Submit_pressed():
 	var query = JSON.print(data)
 	print(query)
 	
+	post = true
 	var headers = ["Content-Type: application/json"]
 	$HTTPRequest.request("http://localhost:8090/todos", headers, true, HTTPClient.METHOD_POST, query)
 
