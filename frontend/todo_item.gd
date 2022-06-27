@@ -9,6 +9,11 @@ func setID(ID: int):
 func setText(var text):
 	$TextEdit.text = text
 
+func _ready():
+	$HTTPDelete.connect("request_completed", self, "_on_request_completed")
+	
+func _on_request_completed(result, response_code, headers, body):
+	get_tree().reload_current_scene()
 
 func _on_Button_pressed():
 	pass
