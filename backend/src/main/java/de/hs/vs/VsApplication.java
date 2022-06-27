@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -74,6 +75,14 @@ public class VsApplication {
 		tempTodo.setID(this.todoItems.size());
 		todoItems.add(tempTodo);
 		return tempTodo;
+	}
+
+	@DeleteMapping(path="/todos/{id}")
+	@CrossOrigin(origins = "http://localhost:8060")
+	public void deleteTodoItem(@PathVariable int id) {
+		System.out.println("Delete");
+		todoItems.remove(id);
+		//TODO rebuild aray
 	}
 
 	public static void main(String[] args) {
