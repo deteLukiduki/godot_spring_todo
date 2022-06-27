@@ -1,9 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://todo_page.gd" type="Script" id=1]
+[ext_resource path="res://theme.tres" type="Theme" id=2]
 
-[sub_resource type="Theme" id=2]
-VBoxContainer/constants/separation = 4
+[sub_resource type="Theme" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.752941, 0.752941, 0.752941, 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -26,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 2.0
 rect_min_size = Vector2( 200, 0 )
-theme = SubResource( 2 )
+theme = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="HBoxContainer/priority1/VBoxContainer"]
 margin_right = 200.0
@@ -44,7 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 2.0
 rect_min_size = Vector2( 200, 0 )
-theme = SubResource( 2 )
+theme = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="HBoxContainer/priority2/VBoxContainer"]
 margin_right = 200.0
@@ -62,7 +65,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 2.0
 rect_min_size = Vector2( 200, 0 )
-theme = SubResource( 2 )
+theme = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="HBoxContainer/priority3/VBoxContainer"]
 margin_right = 200.0
@@ -80,7 +83,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = 2.0
 rect_min_size = Vector2( 200, 0 )
-theme = SubResource( 2 )
+theme = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="HBoxContainer/priority4/VBoxContainer"]
 margin_right = 200.0
@@ -99,7 +102,7 @@ anchor_bottom = 1.0
 margin_bottom = 2.0
 rect_min_size = Vector2( 200, 0 )
 rect_pivot_offset = Vector2( -1023, 109 )
-theme = SubResource( 2 )
+theme = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="HBoxContainer/priority5/VBoxContainer"]
 margin_right = 200.0
@@ -111,20 +114,23 @@ text = "no Priority"
 [node name="controls" type="Panel" parent="."]
 anchor_right = 1.0
 margin_bottom = 50.0
+theme = ExtResource( 2 )
 
 [node name="Button" type="Button" parent="controls"]
 margin_left = 7.0
 margin_top = 8.0
 margin_right = 109.0
 margin_bottom = 42.0
+theme = ExtResource( 2 )
 text = "Add"
 
 [node name="createPanel" type="Panel" parent="."]
-visible = false
 margin_left = 350.0
 margin_top = 175.0
 margin_right = 680.0
 margin_bottom = 398.0
+theme = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="Submit" type="Button" parent="createPanel"]
 margin_left = 183.0
@@ -132,6 +138,7 @@ margin_top = 174.0
 margin_right = 261.0
 margin_bottom = 203.0
 rect_pivot_offset = Vector2( 31, 15 )
+theme = ExtResource( 2 )
 text = "Submit"
 
 [node name="Cancel" type="Button" parent="createPanel"]
@@ -140,6 +147,7 @@ margin_top = 172.0
 margin_right = 126.0
 margin_bottom = 201.0
 rect_pivot_offset = Vector2( 31, 15 )
+theme = ExtResource( 2 )
 text = "Cancel"
 
 [node name="TextEdit" type="TextEdit" parent="createPanel"]
@@ -147,6 +155,7 @@ margin_left = 3.0
 margin_top = 18.0
 margin_right = 270.0
 margin_bottom = 58.0
+theme = ExtResource( 2 )
 text = "todo"
 
 [node name="OptionButton" type="OptionButton" parent="createPanel"]
@@ -154,6 +163,7 @@ margin_left = 8.0
 margin_top = 71.0
 margin_right = 134.0
 margin_bottom = 99.0
+theme = ExtResource( 2 )
 text = "Priority"
 
 [connection signal="pressed" from="controls/Button" to="." method="_on_Button_pressed"]
