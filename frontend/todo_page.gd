@@ -29,6 +29,7 @@ func _on_request_completed(result, response_code, headers, body):
 		for todo in todos.result:
 			var todoItem = todo_res.instance()
 			todoItem.setText(todo.text)
+			todoItem.setID(todo.id);
 			var priority: int = todo.priority
 			
 			match priority:
@@ -52,6 +53,7 @@ func _on_Button_pressed():
 
 
 func _on_Submit_pressed():
+	$createPanel.visible = false
 	var data = {
 		text = $createPanel/TextEdit.text,
 		priority = $createPanel/OptionButton.selected
