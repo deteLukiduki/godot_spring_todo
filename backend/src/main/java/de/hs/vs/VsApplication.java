@@ -82,7 +82,13 @@ public class VsApplication {
 	public void deleteTodoItem(@PathVariable int id) {
 		System.out.println("Delete");
 		todoItems.remove(id);
-		//TODO rebuild aray
+
+		int idCounter = 0;
+		for(ToDoItem item : todoItems) {
+			item.setID(idCounter);
+			idCounter++;
+		}
+		
 	}
 
 	public static void main(String[] args) {
