@@ -12,6 +12,7 @@ ToDo list application. It also includes a basic dummy backend.
 ```
 docker-compose up
 ```
+The frontend is running on port 8080.
 
-The Frontend is prebuild in the 'frontend_build' folder.
+The frontend is prebuild in the 'frontend_build' folder.
 This means Godot is not requierd to build the project.
