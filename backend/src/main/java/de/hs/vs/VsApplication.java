@@ -49,7 +49,7 @@ public class VsApplication {
 	}
 
 	@GetMapping("/todo")
-	@CrossOrigin(origins = "http://localhost:8060")
+	@CrossOrigin(origins = {"http://localhost:8060", "http://localhost:8080"})
 	public ToDoItem getTodoItem() {
 		ToDoItem temp = new ToDoItem();
 		temp.setText("I have to do something");
@@ -59,7 +59,7 @@ public class VsApplication {
 	}
 
 	@GetMapping("/todos")
-	@CrossOrigin(origins = "http://localhost:8060")
+	@CrossOrigin(origins = {"http://localhost:8060", "http://localhost:8080"})
 	public List<ToDoItem> getTodoItems() {
 		System.out.println("get");
 		return this.todoItems;
