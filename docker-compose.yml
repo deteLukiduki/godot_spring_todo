@@ -5,3 +5,8 @@ services:
     build: "./frontend_build"
     ports:
       - 8080:80
+
+  backend:
+    build: "./backend"
+    ports:
+      - 8090:8090

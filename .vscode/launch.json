@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Launch VsApplication",
+            "request": "launch",
+            "mainClass": "de.hs.vs.VsApplication",
+            "projectName": "vs"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-Ex01Application<ex01>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

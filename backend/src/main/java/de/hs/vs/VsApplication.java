@@ -66,7 +66,7 @@ public class VsApplication {
 	}
 
 	@PostMapping(path="/todos", consumes = "application/json", produces = "application/json")
-	@CrossOrigin(origins = "http://localhost:8060")
+	@CrossOrigin(origins = {"http://localhost:8060", "http://localhost:8080"})
 	public ToDoItem addTodoItem(@RequestBody ToDoItem todo) {
 		System.out.println("post");
 		ToDoItem tempTodo = new ToDoItem();
@@ -78,7 +78,7 @@ public class VsApplication {
 	}
 
 	@DeleteMapping(path="/todos/{id}")
-	@CrossOrigin(origins = "http://localhost:8060")
+	@CrossOrigin(origins = {"http://localhost:8060", "http://localhost:8080"})
 	public void deleteTodoItem(@PathVariable int id) {
 		System.out.println("Delete");
 		todoItems.remove(id);
